@@ -5,7 +5,7 @@ import { PlayerContext } from '../context/PlayerContext';
 function Player() {
     const {seekBg, seekBar, playStatus, play, pause, track, time, before, next, seekBarControl} = useContext(PlayerContext);
     return (
-        <div className='h-[10%] bg-black flex justify-between items-center text-[#F8FAFC] px-4'>
+        <div className='h-[10%] bg-black flex sticky bottom-0 justify-between items-center text-[#F8FAFC] px-4'>
             <div className='hidden lg:flex items-center gap-4'>
                 <img className='w-12' src={track.image} alt="" />
                 <div>
