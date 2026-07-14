@@ -10,7 +10,7 @@ function Displayalbum() {
     const { id } = useParams();
     const albumdata = albumsData[id];
     let duration = 0;
-    for(let i=0; i < songsData.length; i++){
+    for (let i = 0; i < songsData.length; i++) {
         duration += Number(songsData[i].duration);
     }
     const { playWithId } = useContext(PlayerContext);
@@ -29,9 +29,20 @@ function Displayalbum() {
                         <div>
                             <img className='inline-block w-8' src={play_logo} alt="" />
                         </div>
-                        <div className='flex gap-2 items-center'>
-                            <b> Zeninzo Play</b> 3,400 <BiLike /> likes |
-                            <b>{songsData.length + " Songs"}</b> | {"About " + Math.floor(duration) + " Mins"}
+                        <div className="flex flex-wrap items-center gap-2 text-sm sm:text-base">
+                            <b className="">Zeninzo Play</b>
+
+                            <span className="flex items-center gap-1">
+                                3,400 <BiLike />
+                            </span>
+
+                            <span>|</span>
+
+                            <b>{songsData.length} Songs</b>
+
+                            <span>|</span>
+
+                            <span>About {Math.floor(duration)} Mins</span>
                         </div>
                     </p>
                 </div>
@@ -44,15 +55,15 @@ function Displayalbum() {
             </div>
             <hr />
             {
-                songsData.map((item,index)=>(
+                songsData.map((item, index) => (
                     <div onClick={() => playWithId(item.id)} key={index} className='grid grid-cols-3 sm:grid-cols-4 gap-3 p-2 items-center text-[#F8FAFC] hover:bg-[#18181B] cursor-pointer'>
                         <p className='text-[#F8FAFC]'>
-                            <b className='mr-4 text-[#F8FAFC]'>{index+1}</b>
+                            <b className='mr-4 text-[#F8FAFC]'>{index + 1}</b>
                             <img className='inline w-10 mr-5' src={item.image} alt="" />
                             {item.name}
                         </p>
                         <p className='text-[15px]'>{albumdata.name}</p>
-                        <p className='text-[15px]'>2 days ago</p>
+                        <p className='text-[15px] hidden md:block'>2 days ago</p>
                         <p className='text-[15px] text-center'>{item.duration}</p>
                     </div>
                 ))
